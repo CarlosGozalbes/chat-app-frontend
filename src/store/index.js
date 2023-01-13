@@ -1,17 +1,16 @@
-import { configureStore, compose, combineReducers, applyMiddleware } from "redux";
-
-import thunkMiddleware from "redux-thunk";
+import { createStore, compose, combineReducers, applyMiddleware } from "redux";
 import { authReducer } from "./reducers/authReducer";
-import { messengerReducer } from "./reducers/messengerReducer";
+import thunkMiddleware from "redux-thunk";
+
 
 const rootReducer = combineReducers({
-  //auth: authReducer,
+  auth: authReducer
   //messenger: messengerReducer,
 });
 
 const middleware = [thunkMiddleware];
 
-const store = configureStore(
+const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(...middleware),
@@ -20,3 +19,5 @@ const store = configureStore(
 );
 
 export default store;
+
+
