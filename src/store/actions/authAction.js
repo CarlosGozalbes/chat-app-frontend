@@ -14,7 +14,7 @@ export const userRegister = (data) => {
             }
         }
         try{
-            const response = await axios.post('/api/messenger/user-register',data,config)
+            const response = await axios.post('http://localhost:5000/api/messenger/user-register',data,config)
             localStorage.setItem('authToken',response.data.token)
 
             dispatch({
@@ -32,6 +32,7 @@ export const userRegister = (data) => {
                     error : error.response.data.error.errorMessage
                 }
             })
+            console.log(error)
         }
     }
 }
